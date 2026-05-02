@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Complete HTML & CSS Tags Reference" />
+  <meta name="author" content="HTML Reference" />
+  <meta name="keywords" content="HTML, CSS, tags, reference" />
+  <title>HTML &amp; CSS — Complete Tag Reference</title>
+  <base href="." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Space+Mono:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" />
+  <style>
+    /* ── CSS CUSTOM PROPERTIES ── */
+    :root {
+      --ink: #0d0d0d;
+      --paper: #f5f0e8;
+      --paper-dark: #e8e0cc;
+      --accent: #c0392b;
+      --accent2: #2c3e50;
+      --gold: #b8860b;
+      --code-bg: #1a1a2e;
+      --code-text: #e0e0ff;
+      --border: #c0b090;
+      --shadow: rgba(0,0,0,0.12);
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-mono: 'Space Mono', Courier New, monospace;
+      --ff-body: 'Lora', Georgia, serif;
+    }
+
+    /* ── CSS RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    /* ── BODY ── */
+    body {
+      font-family: var(--ff-body);
+      background-color: var(--paper);
+      color: var(--ink);
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(192,176,144,.25) 32px),
+        repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(192,176,144,.1) 32px);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-conic-gradient(rgba(255,255,255,.03) 0% 25%, transparent 0% 50%) 0 0 / 40px 40px;
+    }
+    header h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      position: relative;
+      line-height: 1.05;
+    }
+    header h1 span { color: var(--accent); }
+    header p.tagline {
+      font-family: var(--ff-mono);
+      font-size: .85rem;
+      color: rgba(245,240,232,.6);
+      margin-top: 1rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--accent2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: .75rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      justify-content: center;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+    nav a {
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      color: rgba(245,240,232,.8);
+      text-decoration: none;
+      padding: .25rem .6rem;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 2px;
+      transition: all .2s;
+      letter-spacing: .05em;
+    }
+    nav a:hover, nav a:focus { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ── MAIN LAYOUT ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 3.5rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(4px);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 4px 4px 0 var(--border);
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section-head {
+      background: var(--accent2);
+      color: var(--paper);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .section-head h2 {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .section-head .tag-count {
+      font-family: var(--ff-mono);
+      font-size: .7rem;
+      color: rgba(245,240,232,.5);
+      letter-spacing: .1em;
+    }
+    .section-body { padding: 1.5rem; }
+
+    h3 {
+      font-family: var(--ff-display);
+      font-size: 1.15rem;
+      color: var(--accent2);
+      margin: 1.5rem 0 .5rem;
+      border-bottom: 2px solid var(--paper-dark);
+      padding-bottom: .3rem;
+    }
+    h4 { font-family: var(--ff-mono); font-size: .9rem; color: var(--gold); margin: 1rem 0 .3rem; }
+    h5 { font-family: var(--ff-mono); font-size: .8rem; color: var(--accent); margin: .8rem 0 .2rem; }
+    h6 { font-family: var(--ff-mono); font-size: .75rem; color: #888; margin: .6rem 0 .2rem; }
+
+    /* ── CODE DISPLAY ── */
+    .demo-box {
+      background: var(--code-bg);
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin: .8rem 0;
+      overflow-x: auto;
+    }
+    .demo-box code, .demo-box pre {
+      font-family: var(--ff-mono);
+      font-size: .8rem;
+      color: var(--code-text);
+      line-height: 1.6;
+    }
+    code {
+      font-family: var(--ff-mono);
+      font-size: .82em;
+      background: rgba(44,62,80,.1);
+      color: var(--accent2);
+      padding: .1em .35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: .82rem;
+      line-height: 1.6;
+    }
+    pre code { background: none; color: inherit; padding: 0; }
+    kbd {
+      font-family: var(--ff-mono);
+      font-size: .8em;
+      background: var(--accent2);
+      color: #fff;
+      padding: .15em .5em;
+      border-radius: 3px;
+      box-shadow: 0 2px 0 #111;
+    }
+    samp { font-family: var(--ff-mono); color: #2e7d32; }
+    var { font-style: italic; color: var(--gold); }
+
+    /* ── TAG GRID ── */
+    .tag-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .5rem;
+      margin: .8rem 0;
+    }
+    .tag-pill {
+      font-family: var(--ff-mono);
+      font-size: .75rem;
+      background: var(--paper-dark);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: .3rem .6rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--accent2);
+    }
+    .tag-pill::before { content: '<'; color: var(--accent); }
+    .tag-pill::after  { content: '>'; color: var(--accent); }
+
+    /* ── TEXT DEMOS ── */
+    .text-demo { padding: .8rem 1rem; background: rgba(245,240,232,.7); border-left: 3px solid var(--border); margin: .6rem 0; }
+    .text-demo p { margin-bottom: .4rem; }
+
+    /* ── TABLE ── */
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; margin: .8rem 0; }
+    caption { font-family: var(--ff-mono); font-size: .78rem; color: #666; margin-bottom: .5rem; text-align: left; }
+    thead { background: var(--accent2); color: #fff; }
+    thead th { padding: .6rem 1rem; text-align: left; font-weight: 700; font-family: var(--ff-mono); font-size: .8rem; letter-spacing: .05em; }
+    tbody tr:nth-child(odd)  { background: rgba(255,255,255,.6); }
+    tbody tr:nth-child(even) { background: var(--paper-dark); }
+    td, th { padding: .5rem 1rem; border: 1px solid var(--border); }
+    tfoot td { background: var(--paper-dark); font-weight: 600; }
+    colgroup col.highlight { background: rgba(192,57,43,.06); }
+
+    /* ── FORMS ── */
+    fieldset { border: 1px solid var(--border); border-radius: 2px; padding: 1rem; margin: .8rem 0; }
+    legend { font-family: var(--ff-mono); font-size: .78rem; background: var(--accent2); color: #fff; padding: .25rem .75rem; border-radius: 2px; }
+    label { display: block; font-family: var(--ff-mono); font-size: .8rem; color: #444; margin-bottom: .2rem; }
+    input, select, textarea {
+      font-family: var(--ff-body);
+      font-size: .9rem;
+      border: 1px solid var(--border);
+      padding: .45rem .75rem;
+      border-radius: 2px;
+      background: #fff;
+      width: 100%;
+      margin-bottom: .8rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 3px rgba(44,62,80,.12);
+    }
+    input[type="checkbox"], input[type="radio"] { width: auto; margin-right: .5rem; }
+    input[type="color"]  { width: 3rem; height: 2.2rem; padding: .1rem; cursor: pointer; }
+    input[type="range"]  { padding: .35rem 0; }
+    button, input[type="submit"], input[type="reset"], input[type="button"] {
+      font-family: var(--ff-mono);
+      font-size: .82rem;
+      background: var(--accent2);
+      color: #fff;
+      border: none;
+      padding: .55rem 1.2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      letter-spacing: .05em;
+      width: auto;
+      margin-bottom: .5rem;
+      transition: background .2s, transform .1s;
+    }
+    button:hover { background: var(--accent); }
+    button:active { transform: scale(.97); }
+    output { font-family: var(--ff-mono); font-size: .85rem; color: var(--accent); margin-left: .5rem; }
+    meter, progress { width: 100%; margin: .4rem 0; }
+    datalist { display: none; }
+
+    /* ── MEDIA ── */
+    figure { text-align: center; margin: 1rem 0; }
+    figcaption { font-family: var(--ff-mono); font-size: .72rem; color: #666; margin-top: .4rem; }
+    img { max-width: 100%; border-radius: 2px; border: 1px solid var(--border); }
+    picture { display: block; }
+    audio, video { width: 100%; border-radius: 2px; margin: .5rem 0; }
+    canvas { border: 1px dashed var(--border); border-radius: 2px; max-width: 100%; }
+    svg text { font-family: var(--ff-mono); }
+    iframe { border: 1px solid var(--border); border-radius: 2px; width: 100%; max-width: 100%; }
+
+    /* ── LISTS ── */
+    ul, ol { padding-left: 1.8rem; margin: .5rem 0; }
+    ul li, ol li { margin-bottom: .25rem; }
+    dl { margin: .5rem 0; }
+    dt { font-weight: 700; font-family: var(--ff-mono); font-size: .85rem; color: var(--accent2); margin-top: .5rem; }
+    dd { margin-left: 1.5rem; color: #444; font-size: .9rem; }
+
+    /* ── BLOCKQUOTE ── */
+    blockquote {
+      border-left: 4px solid var(--gold);
+      background: rgba(184,134,11,.07);
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { font-style: italic; }
+    blockquote cite { font-family: var(--ff-mono); font-size: .75rem; color: #666; display: block; margin-top: .4rem; }
+
+    /* ── DETAILS / SUMMARY ── */
+    details { border: 1px solid var(--border); border-radius: 2px; margin: .5rem 0; }
+    summary {
+      font-family: var(--ff-mono);
+      font-size: .85rem;
+      padding: .6rem 1rem;
+      cursor: pointer;
+      background: var(--paper-dark);
+      user-select: none;
+      color: var(--accent2);
+    }
+    summary:hover { background: var(--border); }
+    details[open] > summary { border-bottom: 1px solid var(--border); }
+    details p { padding: .8rem 1rem; }
+
+    /* ── DIALOG ── */
+    dialog {
+      border: 2px solid var(--accent2);
+      border-radius: 4px;
+      padding: 2rem;
+      background: var(--paper);
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+      max-width: 400px;
+      font-family: var(--ff-body);
+    }
+    dialog::backdrop { background: rgba(0,0,0,.4); }
+
+    /* ── MARK, HIGHLIGHT ── */
+    mark { background: rgba(192,57,43,.2); color: var(--ink); border-radius: 2px; padding: .05em .2em; }
+
+    /* ── MISC INLINE ── */
+    abbr[title] { text-decoration: underline dotted; cursor: help; color: var(--accent2); }
+    acronym { border-bottom: 1px dashed var(--accent2); cursor: help; }
+    dfn { font-style: italic; font-weight: 600; color: var(--accent2); }
+    address { font-style: normal; font-family: var(--ff-mono); font-size: .82rem; line-height: 1.8; }
+    time { font-family: var(--ff-mono); font-size: .82rem; color: #555; }
+    del { color: #c0392b; text-decoration-color: #c0392b; }
+    ins { color: #27ae60; text-decoration: underline; }
+    s  { color: #999; }
+    q::before { content: open-quote; color: var(--gold); }
+    q::after  { content: close-quote; color: var(--gold); }
+    small { font-size: .8em; }
+    sup, sub { font-family: var(--ff-mono); font-size: .7em; }
+    u { text-decoration-color: var(--accent); }
+    ruby { ruby-align: center; }
+    rt { font-size: .6em; color: #888; }
+    bdo { display: inline-block; border-bottom: 1px dotted #888; }
+    cite { font-style: italic; color: #666; }
+
+    /* ── DATA & METER ── */
+    data::after { content: ' (' attr(value) ')'; font-family: var(--ff-mono); font-size: .75em; color: #888; }
+
+    /* ── HORIZONTAL RULE ── */
+    hr { border: none; border-top: 2px solid var(--border); margin: 1.5rem 0; }
+
+    /* ── SEMANTIC LAYOUT TAGS DEMO ── */
+    .layout-demo { display: grid; grid-template-columns: 1fr 3fr 1fr; gap: .5rem; min-height: 200px; }
+    .layout-demo > * { border: 1px solid var(--border); border-radius: 2px; padding: .75rem; font-family: var(--ff-mono); font-size: .72rem; color: #444; }
+    .layout-demo article { background: rgba(44,62,80,.05); }
+    .layout-demo aside   { background: rgba(192,57,43,.05); }
+    .layout-demo > header, .layout-demo > footer { grid-column: 1/-1; background: var(--paper-dark); }
+    .layout-demo nav { background: rgba(184,134,11,.08); grid-column: 1/-1; display: block; }
+
+    /* ── CSS PROPERTIES SHOWCASE ── */
+    .css-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .css-card { border: 1px solid var(--border); border-radius: 4px; padding: 1rem; background: rgba(255,255,255,.7); }
+    .css-card h5 { font-family: var(--ff-mono); font-size: .72rem; color: var(--accent); margin-bottom: .5rem; }
+
+    /* ANIMATION */
+    @keyframes spin    { to { transform: rotate(360deg); } }
+    @keyframes pulse   { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+    @keyframes slide   { from { transform: translateX(-20px); opacity:0; } to { transform: translateX(0); opacity:1; } }
+    @keyframes bounce  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes shimmer { 0% { background-position: -200%; } 100% { background-position: 200%; } }
+
+    .anim-spin    { display: inline-block; animation: spin   2s linear infinite; font-size: 1.5rem; }
+    .anim-pulse   { display: inline-block; animation: pulse  1.5s ease-in-out infinite; }
+    .anim-slide   { animation: slide  .6s ease forwards; }
+    .anim-bounce  { display: inline-block; animation: bounce 1s ease-in-out infinite; }
+    .anim-shimmer {
+      background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      height: 1.2rem;
+      border-radius: 2px;
+    }
+
+    /* TRANSFORM */
+    .trans-demo { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .trans-box {
+      width: 60px; height: 60px;
+      background: var(--accent2);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .t-rotate    { transform: rotate(20deg); }
+    .t-scale     { transform: scale(1.2); }
+    .t-skew      { transform: skewX(15deg); }
+    .t-3d        { transform: perspective(200px) rotateY(25deg); }
+    .t-translate { transform: translate(8px, -8px); }
+
+    /* FILTER */
+    .filter-demo { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; }
+    .filter-swatch { width: 80px; height: 60px; background: linear-gradient(135deg, #c0392b, #2c3e50); border-radius: 2px; }
+    .f-blur      { filter: blur(3px); }
+    .f-sepia     { filter: sepia(1); }
+    .f-invert    { filter: invert(1); }
+    .f-hue       { filter: hue-rotate(120deg); }
+    .f-saturate  { filter: saturate(3); }
+    .f-brightness{ filter: brightness(1.8); }
+    .f-contrast  { filter: contrast(2); }
+    .f-drop      { filter: drop-shadow(4px 4px 6px rgba(0,0,0,.5)); }
+
+    /* GRID LAYOUT DEMO */
+    .grid-areas {
+      display: grid;
+      grid-template-areas: 'a a b' 'c d b' 'c e e';
+      gap: .5rem;
+      height: 160px;
+    }
+    .grid-areas > div {
+      border-radius: 2px;
+      display: grid;
+      place-items: center;
+      font-family: var(--ff-mono);
+      font-size: .7rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .ga { grid-area: a; background: #c0392b; }
+    .gb { grid-area: b; background: #2c3e50; }
+    .gc { grid-area: c; background: #b8860b; }
+    .gd { grid-area: d; background: #27ae60; }
+    .ge { grid-area: e; background: #8e44ad; }
+
+    /* FLEXBOX */
+    .flex-demo { display: flex; gap: .5rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .flex-item { background: var(--accent2); color: #fff; padding: .4rem .8rem; border-radius: 2px; font-family: var(--ff-mono); font-size: .75rem; }
+
+    /* CUSTOM PROPERTIES */
+    .cp-demo { --local-color: #27ae60; --local-size: 1.2rem; color: var(--local-color); font-size: var(--local-size); font-family: var(--ff-mono); }
+
+    /* GRADIENT */
+    .grad-row { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .grad { height: 50px; flex: 1; min-width: 100px; border-radius: 2px; }
+    .g-linear  { background: linear-gradient(135deg, #c0392b, #f39c12); }
+    .g-radial  { background: radial-gradient(circle, #2c3e50, #8e44ad); }
+    .g-conic   { background: conic-gradient(from 90deg, #c0392b, #f39c12, #27ae60, #2c3e50, #c0392b); }
+    .g-repeat  { background: repeating-linear-gradient(45deg, #2c3e50 0px, #2c3e50 10px, transparent 10px, transparent 20px); }
+
+    /* PSEUDO ELEMENTS */
+    .pseudo-demo { position: relative; padding: 1rem; }
+    .pseudo-demo::before { content: '▶'; color: var(--accent); margin-right: .5rem; }
+    .pseudo-demo::after  { content: ' ◀'; color: var(--gold); }
+
+    /* SELECTORS */
+    .sel-list li:first-child  { color: var(--accent); font-weight: 700; }
+    .sel-list li:last-child   { color: var(--gold); font-style: italic; }
+    .sel-list li:nth-child(2) { text-decoration: underline; }
+    .sel-list li:hover        { background: var(--paper-dark); padding-left: .5rem; transition: all .2s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .layout-demo { grid-template-columns: 1fr; }
+      .css-grid    { grid-template-columns: 1fr; }
+    }
+    @media (prefers-color-scheme: dark) { /* Honored if enabled */ }
+    @media print {
+      nav { display: none; }
+      section { break-inside: avoid; }
+    }
+
+    /* CLIP-PATH */
+    .clip-demo { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .clip { width: 70px; height: 70px; background: var(--accent); display: grid; place-items: center; color: #fff; font-family: var(--ff-mono); font-size: .6rem; }
+    .c-circle  { clip-path: circle(50%); }
+    .c-polygon { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); }
+    .c-ellipse { clip-path: ellipse(50% 30% at 50% 50%); }
+    .c-inset   { clip-path: inset(10px 15px round 8px); }
+
+    /* GRID/FLEX ALIGNMENT */
+    .align-demo { display: flex; gap: .4rem; height: 80px; background: var(--paper-dark); border-radius: 2px; padding: .5rem; }
+    .align-demo .item { background: var(--accent2); color: #fff; padding: .2rem .5rem; font-family: var(--ff-mono); font-size: .65rem; border-radius: 2px; }
+    .a-start   { align-self: flex-start; }
+    .a-center  { align-self: center; }
+    .a-end     { align-self: flex-end; }
+    .a-stretch { align-self: stretch; display: flex; align-items: center; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: rgba(245,240,232,.6);
+      text-align: center;
+      padding: 2.5rem;
+      font-family: var(--ff-mono);
+      font-size: .78rem;
+      letter-spacing: .08em;
+    }
+    footer address { font-style: normal; }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* SCROLL HIGHLIGHT */
+    :target { outline: 3px solid var(--accent); outline-offset: 4px; }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════════ -->
+<header>
+  <h1>HTML <span>&amp;</span> CSS<br>Complete Reference</h1>
+  <p class="tagline">Every Tag · Every Property · One Page</p>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════════════ -->
+<nav aria-label="Page sections">
+  <a href="#document">Document</a>
+  <a href="#semantic">Semantic Layout</a>
+  <a href="#text">Text &amp; Inline</a>
+  <a href="#lists">Lists</a>
+  <a href="#tables">Tables</a>
+  <a href="#forms">Forms</a>
+  <a href="#media">Media &amp; Embed</a>
+  <a href="#interactive">Interactive</a>
+  <a href="#css-selectors">CSS Selectors</a>
+  <a href="#css-box">Box Model</a>
+  <a href="#css-layout">Layout</a>
+  <a href="#css-visual">Visual Effects</a>
+  <a href="#css-anim">Animation</a>
+  <a href="#css-responsive">Responsive</a>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════════
+     1 · DOCUMENT METADATA TAGS
+══════════════════════════════════════════════════════════ -->
+<section id="document">
+  <div class="section-head">
+    <h2>Document Structure &amp; Metadata Tags</h2>
+    <span class="tag-count">used in &lt;head&gt;</span>
+  </div>
+  <div class="section-body">
+    <p>These tags live inside <code>&lt;head&gt;</code> and are not visually rendered — they provide metadata, load resources, and define document behaviour.</p>
+    <div class="tag-grid">
+      <span class="tag-pill">html</span>
+      <span class="tag-pill">head</span>
+      <span class="tag-pill">body</span>
+      <span class="tag-pill">title</span>
+      <span class="tag-pill">meta</span>
+      <span class="tag-pill">link</span>
+      <span class="tag-pill">style</span>
+      <span class="tag-pill">script</span>
+      <span class="tag-pill">noscript</span>
+      <span class="tag-pill">base</span>
+      <span class="tag-pill">!DOCTYPE</span>
+    </div>
+    <div class="demo-box">
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content="Page description"&gt;
+    &lt;meta name="author" content="Author Name"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;base href="/"&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;link rel="icon" href="favicon.ico"&gt;
+    &lt;link rel="canonical" href="https://example.com"&gt;
+    &lt;script src="app.js" defer&gt;&lt;/script&gt;
+    &lt;noscript&gt;Please enable JavaScript.&lt;/noscript&gt;
+    &lt;style&gt; /* inline CSS */ &lt;/style&gt;
+  &lt;/head&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     2 · SEMANTIC LAYOUT
+══════════════════════════════════════════════════════════ -->
+<section id="semantic">
+  <div class="section-head">
+    <h2>Semantic Layout Tags</h2>
+    <span class="tag-count">structural</span>
+  </div>
+  <div class="section-body">
+    <p>Semantic HTML gives meaning to structure — search engines, screen readers, and developers all benefit from proper use of these tags.</p>
+    <div class="tag-grid">
+      <span class="tag-pill">header</span>
+      <span class="tag-pill">footer</span>
+      <span class="tag-pill">main</span>
+      <span class="tag-pill">nav</span>
+      <span class="tag-pill">section</span>
+      <span class="tag-pill">article</span>
+      <span class="tag-pill">aside</span>
+      <span class="tag-pill">div</span>
+      <span class="tag-pill">span</span>
+      <span class="tag-pill">address</span>
+      <span class="tag-pill">hgroup</span>
+      <span class="tag-pill">search</span>
+    </div>
+
+    <h3>Live Layout Demo</h3>
+    <div class="layout-demo">
+      <header style="text-align:center;font-weight:700;">&lt;header&gt; — site header / logo / branding</header>
+      <nav style="text-align:center;">&lt;nav&gt; — navigation links</nav>
+      <aside>&lt;aside&gt;<br>sidebar / related content</aside>
+      <article>&lt;article&gt;<br><p>Self-contained content like a blog post. Can be independently distributed.</p><section style="font-size:.7rem;opacity:.7;">&lt;section&gt; — thematic grouping inside article</section></article>
+      <aside>&lt;aside&gt;<br>ads / widgets</aside>
+      <footer style="text-align:center;">&lt;footer&gt; — copyright, links, contact</footer>
+    </div>
+
+    <h3>address</h3>
+    <address>
+      Written by <a href="mailto:dev@example.com">dev@example.com</a><br>
+      123 Web Street, Internet City, WWW 00001
+    </address>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     3 · TEXT & INLINE TAGS
+══════════════════════════════════════════════════════════ -->
+<section id="text">
+  <div class="section-head">
+    <h2>Text, Headings &amp; Inline Tags</h2>
+    <span class="tag-count">typography</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Headings h1–h6</h3>
+    <h1 style="font-size:2rem;margin:.3rem 0">h1 — Page Title (largest)</h1>
+    <h2 style="font-size:1.6rem;margin:.3rem 0">h2 — Section Heading</h2>
+    <h3 style="border:none;padding:0;margin:.3rem 0">h3 — Subsection</h3>
+    <h4>h4 — Minor Heading</h4>
+    <h5>h5 — Sub-minor Heading</h5>
+    <h6>h6 — Smallest heading</h6>
+
+    <h3>Paragraphs &amp; Block Text</h3>
+    <div class="text-demo">
+      <p>This is a <strong>paragraph</strong> (<code>&lt;p&gt;</code>). It contains <b>bold</b> (<code>&lt;b&gt;</code>), <i>italic</i> (<code>&lt;i&gt;</code>), <em>emphasised</em> (<code>&lt;em&gt;</code>), and <strong>strong</strong> (<code>&lt;strong&gt;</code>) text.</p>
+      <p>Subscript: H<sub>2</sub>O — Superscript: E=mc<sup>2</sup> — <small>Small text</small> — <mark>Highlighted text</mark></p>
+      <p><del>Deleted text</del> — <ins>Inserted text</ins> — <s>Strikethrough</s> — <u>Underlined</u></p>
+      <p>
+        <abbr title="HyperText Markup Language">HTML</abbr> is an
+        <dfn>abbreviation</dfn> defined here.
+        <cite>MDN Web Docs</cite> is a great reference.
+      </p>
+      <p>The time is <time datetime="2024-01-15T12:00">noon on Jan 15, 2024</time>.</p>
+      <p><data value="42">The answer</data> to life, the universe and everything.</p>
+      <p>Ruby: <ruby>漢字<rt>かんじ</rt></ruby> — BDO: <bdo dir="rtl">reversed text</bdo></p>
+      <p>Inline quote: <q>To be or not to be.</q></p>
+      <p>Keyboard: Press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save.</p>
+      <p>Sample output: <samp>Hello, World!</samp> — Variable: <var>x</var> = 42</p>
+      <p><wbr>This is a very long word that might need a break: super&shy;califragilistic&shy;expialidocious</p>
+      <p><span style="color:var(--accent)">Span</span> for inline styling. Line break below:</p>
+      <p>Line one.<br>Line two after &lt;br&gt;.</p>
+    </div>
+
+    <h3>Blockquote &amp; Pre</h3>
+    <blockquote>
+      <p>Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</p>
+      <cite>— Martin Fowler</cite>
+    </blockquote>
+    <pre>
+  function greet(name) {
+    return `Hello, ${name}!`;  // &lt;pre&gt; preserves whitespace
+  }
+    </pre>
+
+    <hr>
+
+    <h3>Code Tags</h3>
+    <div class="text-demo">
+      <p><code>&lt;code&gt;</code> for inline code snippets.</p>
+      <p><kbd>Ctrl+C</kbd> = copy — <samp>Output here</samp> — <var>variable</var></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     4 · LISTS
+══════════════════════════════════════════════════════════ -->
+<section id="lists">
+  <div class="section-head">
+    <h2>List Tags</h2>
+    <span class="tag-count">ul · ol · dl · menu</span>
+  </div>
+  <div class="section-body">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;">
+
+      <div>
+        <h4>Unordered List</h4>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript
+            <ul>
+              <li>React</li>
+              <li>Vue</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Ordered List</h4>
+        <ol>
+          <li>Plan</li>
+          <li>Design</li>
+          <li>Develop</li>
+          <li>Test</li>
+          <li>Deploy</li>
+        </ol>
+      </div>
+
+      <div>
+        <h4>Ordered (reversed)</h4>
+        <ol reversed start="5">
+          <li>Five</li>
+          <li>Four</li>
+          <li>Three</li>
+        </ol>
+      </div>
+
+      <div>
+        <h4>Description List</h4>
+        <dl>
+          <dt>HTML</dt>
+          <dd>HyperText Markup Language</dd>
+          <dt>CSS</dt>
+          <dd>Cascading Style Sheets</dd>
+          <dt>JS</dt>
+          <dd>JavaScript</dd>
+        </dl>
+      </div>
+
+      <div>
+        <h4>CSS Selectors on List</h4>
+        <ul class="sel-list" style="list-style:none;padding:0;">
+          <li>First child (red)</li>
+          <li>Second child (underlined)</li>
+          <li>Middle child</li>
+          <li>Last child (gold italic)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Menu (toolbar)</h4>
+        <menu style="list-style:none;padding:0;display:flex;gap:.4rem;flex-wrap:wrap;">
+          <li><button type="button" style="padding:.3rem .6rem;font-size:.75rem;">File</button></li>
+          <li><button type="button" style="padding:.3rem .6rem;font-size:.75rem;">Edit</button></li>
+          <li><button type="button" style="padding:.3rem .6rem;font-size:.75rem;">View</button></li>
+        </menu>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     5 · TABLES
+══════════════════════════════════════════════════════════ -->
+<section id="tables">
+  <div class="section-head">
+    <h2>Table Tags</h2>
+    <span class="tag-count">table · thead · tbody · tfoot · caption · colgroup</span>
+  </div>
+  <div class="section-body">
+    <table>
+      <caption>CSS Tag Usage Frequency</caption>
+      <colgroup>
+        <col />
+        <col class="highlight" />
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Tag</th>
+          <th scope="col">Category</th>
+          <th scope="col">Support</th>
+          <th scope="col">Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>&lt;div&gt;</code></td>
+          <td>Layout</td>
+          <td>All browsers</td>
+          <td>Very High</td>
+        </tr>
+        <tr>
+          <td><code>&lt;section&gt;</code></td>
+          <td>Semantic</td>
+          <td>All browsers</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td><code>&lt;dialog&gt;</code></td>
+          <td>Interactive</td>
+          <td>Modern browsers</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td><code>&lt;canvas&gt;</code></td>
+          <td>Graphics</td>
+          <td>All browsers</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td><code>&lt;ruby&gt;</code></td>
+          <td>Text</td>
+          <td>All browsers</td>
+          <td>Low</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total Tags Covered</td>
+          <td>100+</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     6 · FORMS
+══════════════════════════════════════════════════════════ -->
+<section id="forms">
+  <div class="section-head">
+    <h2>Form Tags</h2>
+    <span class="tag-count">form · input · select · textarea · button · fieldset · label</span>
+  </div>
+  <div class="section-body">
+    <form action="#" method="get" novalidate enctype="multipart/form-data">
+
+      <fieldset>
+        <legend>Personal Info</legend>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="John" autocomplete="given-name" required />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="john@example.com" />
+        <label for="pwd">Password</label>
+        <input type="password" id="pwd" name="pwd" placeholder="••••••••" minlength="8" />
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900" />
+        <label for="url">Website</label>
+        <input type="url" id="url" name="url" placeholder="https://example.com" />
+        <label for="bday">Birthday</label>
+        <input type="date" id="bday" name="bday" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Preferences</legend>
+        <label for="color-pick">Favourite Colour</label>
+        <input type="color" id="color-pick" name="fav_color" value="#c0392b" />
+        <br><br>
+        <label for="volume">Volume</label>
+        <input type="range" id="volume" name="volume" min="0" max="100" value="60"
+               oninput="document.getElementById('vol-out').value=this.value" />
+        <output id="vol-out">60</output>
+        <br>
+        <label for="age">Age (number)</label>
+        <input type="number" id="age" name="age" min="0" max="120" />
+        <label for="search-input">Search</label>
+        <input type="search" id="search-input" name="q" placeholder="Search…" />
+        <label for="city">City (datalist)</label>
+        <input type="text" id="city" name="city" list="cities" placeholder="Start typing…" />
+        <datalist id="cities">
+          <option value="New York"></option>
+          <option value="London"></option>
+          <option value="Tokyo"></option>
+          <option value="Paris"></option>
+          <option value="Mumbai"></option>
+        </datalist>
+        <label for="month-pick">Month</label>
+        <input type="month" id="month-pick" name="month" />
+        <label for="week-pick">Week</label>
+        <input type="week" id="week-pick" name="week" />
+        <label for="datetime-pick">Date &amp; Time</label>
+        <input type="datetime-local" id="datetime-pick" name="dt" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Choices</legend>
+        <label>
+          <input type="checkbox" name="agree" value="yes" checked /> I agree to the terms
+        </label>
+        <label>
+          <input type="checkbox" name="newsletter" value="yes" /> Subscribe to newsletter
+        </label>
+        <br>
+        <label><input type="radio" name="plan" value="free" /> Free</label>
+        <label><input type="radio" name="plan" value="pro" checked /> Pro</label>
+        <label><input type="radio" name="plan" value="enterprise" /> Enterprise</label>
+        <br><br>
+        <label for="country">Country</label>
+        <select id="country" name="country" multiple size="3">
+          <optgroup label="Asia">
+            <option value="in">India</option>
+            <option value="jp">Japan</option>
+            <option value="cn">China</option>
+          </optgroup>
+          <optgroup label="Europe">
+            <option value="gb">United Kingdom</option>
+            <option value="de">Germany</option>
+          </optgroup>
+        </select>
+        <br>
+        <label for="msg">Message</label>
+        <textarea id="msg" name="msg" rows="4" cols="40" placeholder="Your message here…" maxlength="500"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>File &amp; Hidden</legend>
+        <label for="upload">Upload File</label>
+        <input type="file" id="upload" name="file" accept="image/*,.pdf" multiple />
+        <input type="hidden" name="csrf" value="abc123" />
+      </fieldset>
+
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <button type="button" onclick="document.getElementById('demo-dialog').showModal()">Open Dialog</button>
+        <input type="submit" value="Input Submit" />
+        <input type="button" value="Input Button" onclick="alert('Clicked!')" />
+        <input type="image" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image submit" width="30" height="30" />
+      </div>
+
+      <br>
+      <label>Progress: <progress id="progress-bar" value="70" max="100">70%</progress></label>
+      <br>
+      <label>Meter (disk usage): <meter value="0.65" min="0" max="1" low="0.3" high="0.7" optimum="0.5">65%</meter></label>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     7 · MEDIA & EMBED
+══════════════════════════════════════════════════════════ -->
+<section id="media">
+  <div class="section-head">
+    <h2>Media &amp; Embedded Content Tags</h2>
+    <span class="tag-count">img · picture · audio · video · canvas · svg · iframe · embed · object</span>
+  </div>
+  <div class="section-body">
+
+    <h3>img &amp; picture</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start;">
+      <figure>
+        <img
+          src="https://picsum.photos/seed/html/400/200"
+          alt="A random landscape photo demonstrating the img tag"
+          width="400" height="200"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>&lt;img&gt; — with alt, width, height, loading, decoding attrs</figcaption>
+      </figure>
+      <figure>
+        <picture>
+          <source media="(min-width:600px)" srcset="https://picsum.photos/seed/css/400/200" />
+          <img src="https://picsum.photos/seed/css2/200/200" alt="Picture tag demo" loading="lazy" />
+        </picture>
+        <figcaption>&lt;picture&gt; — responsive image with &lt;source&gt;</figcaption>
+      </figure>
+    </div>
+
+    <h3>audio</h3>
+    <figure>
+      <audio controls preload="none">
+        <source src="audio.ogg" type="audio/ogg" />
+        <source src="audio.mp3" type="audio/mpeg" />
+        <track kind="captions" src="captions.vtt" srclang="en" label="English" />
+        Your browser does not support the audio element.
+      </audio>
+      <figcaption>&lt;audio&gt; with controls, multiple &lt;source&gt; and &lt;track&gt;</figcaption>
+    </figure>
+
+    <h3>video</h3>
+    <figure>
+      <video controls width="320" height="180" poster="https://picsum.photos/seed/video/320/180" preload="none" muted>
+        <source src="video.mp4" type="video/mp4" />
+        <source src="video.webm" type="video/webm" />
+        <track kind="subtitles" src="subs.vtt" srclang="en" label="English" default />
+        Your browser does not support the video element.
+      </video>
+      <figcaption>&lt;video&gt; with poster, controls, &lt;source&gt; and &lt;track&gt;</figcaption>
+    </figure>
+
+    <h3>canvas (JS drawn)</h3>
+    <figure>
+      <canvas id="demo-canvas" width="300" height="100">
+        Your browser does not support canvas.
+      </canvas>
+      <figcaption>&lt;canvas&gt; — drawn with JavaScript</figcaption>
+    </figure>
+
+    <h3>SVG (inline)</h3>
+    <figure>
+      <svg width="220" height="80" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SVG demo shapes">
+        <defs>
+          <linearGradient id="svgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#c0392b" />
+            <stop offset="100%" style="stop-color:#2c3e50" />
+          </linearGradient>
+          <filter id="shadow-filter">
+            <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity=".3"/>
+          </filter>
+        </defs>
+        <rect x="5" y="10" width="60" height="60" fill="url(#svgGrad)" rx="4" filter="url(#shadow-filter)" />
+        <circle cx="100" cy="40" r="28" fill="#b8860b" opacity=".85" />
+        <polygon points="155,12 185,68 125,68" fill="#27ae60" />
+        <text x="200" y="44" font-size="10" fill="#2c3e50" text-anchor="middle">SVG</text>
+        <line x1="5" y1="75" x2="215" y2="75" stroke="#c0b090" stroke-width="1"/>
+      </svg>
+      <figcaption>Inline &lt;svg&gt; — rect, circle, polygon, text, line, defs, linearGradient, filter</figcaption>
+    </figure>
+
+    <h3>map &amp; area (image map)</h3>
+    <figure>
+      <img src="https://picsum.photos/seed/map/300/100" alt="Image map demo" width="300" height="100" usemap="#demo-map" />
+      <map name="demo-map">
+        <area shape="rect"   coords="0,0,100,100"   href="#" alt="Left area" title="Left" />
+        <area shape="circle" coords="200,50,40"      href="#" alt="Circle"   title="Circle" />
+        <area shape="poly"   coords="150,0,200,50,150,100" href="#" alt="Triangle" title="Poly" />
+      </map>
+      <figcaption>&lt;img usemap&gt; + &lt;map&gt; + &lt;area&gt;</figcaption>
+    </figure>
+
+    <h3>iframe</h3>
+    <figure>
+      <iframe
+        src="about:blank"
+        title="Demo iframe"
+        width="100%"
+        height="80"
+        sandbox="allow-scripts"
+        loading="lazy"
+        srcdoc="&lt;body style='font-family:monospace;background:#f0f0f0;display:grid;place-items:center;height:100%;margin:0'&gt;&lt;p&gt;I am an &amp;lt;iframe&amp;gt; element!&lt;/p&gt;&lt;/body&gt;"
+      ></iframe>
+      <figcaption>&lt;iframe&gt; with srcdoc, sandbox, loading="lazy"</figcaption>
+    </figure>
+
+    <h3>embed &amp; object</h3>
+    <div class="demo-box">
+      <pre><code>&lt;embed src="file.pdf" type="application/pdf" width="600" height="400"&gt;
+
+&lt;object data="file.svg" type="image/svg+xml" width="200" height="200"&gt;
+  &lt;param name="autoplay" value="false"&gt;
+  Fallback content if object fails to load.
+&lt;/object&gt;</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     8 · INTERACTIVE TAGS
+══════════════════════════════════════════════════════════ -->
+<section id="interactive">
+  <div class="section-head">
+    <h2>Interactive &amp; Scripting Tags</h2>
+    <span class="tag-count">details · summary · dialog · template · slot</span>
+  </div>
+  <div class="section-body">
+
+    <h3>details &amp; summary (accordion)</h3>
+    <details open>
+      <summary>What is HTML?</summary>
+      <p>HTML stands for HyperText Markup Language. It is the standard language for creating web pages, describing their structure using a series of elements represented by tags.</p>
+    </details>
+    <details>
+      <summary>What is CSS?</summary>
+      <p>CSS (Cascading Style Sheets) controls the visual presentation of HTML elements — colours, fonts, layouts, animations, and responsive behaviour.</p>
+    </details>
+    <details>
+      <summary>What is JavaScript?</summary>
+      <p>JavaScript is a scripting language that adds interactivity and dynamic behaviour to web pages.</p>
+    </details>
+
+    <h3>dialog</h3>
+    <dialog id="demo-dialog">
+      <h4 style="font-family:var(--ff-display);margin-bottom:.8rem">Native &lt;dialog&gt; Element</h4>
+      <p style="font-size:.9rem;margin-bottom:1rem;">This is a native HTML dialog. No JavaScript library needed — just <code>showModal()</code>!</p>
+      <button type="button" onclick="document.getElementById('demo-dialog').close()">Close</button>
+    </dialog>
+    <p><button type="button" onclick="document.getElementById('demo-dialog').showModal()">Open &lt;dialog&gt;</button></p>
+
+    <h3>template &amp; slot</h3>
+    <div class="demo-box">
+      <pre><code>&lt;!-- template is not rendered until cloned via JS --&gt;
+&lt;template id="card-template"&gt;
+  &lt;div class="card"&gt;
+    &lt;slot name="title"&gt;Default Title&lt;/slot&gt;
+    &lt;slot name="body"&gt;Default body text.&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;!-- Usage in Web Components --&gt;
+&lt;my-card&gt;
+  &lt;span slot="title"&gt;My Card&lt;/span&gt;
+  &lt;p slot="body"&gt;Content here.&lt;/p&gt;
+&lt;/my-card&gt;</code></pre>
+    </div>
+    <template id="card-template">
+      <div style="border:1px solid var(--border);padding:1rem;margin:.5rem 0;border-radius:2px;">
+        <strong id="t-title"></strong>
+        <p id="t-body" style="font-size:.88rem;margin-top:.3rem;"></p>
+      </div>
+    </template>
+    <div id="template-output"></div>
+    <button type="button" onclick="
+      const tmpl = document.getElementById('card-template').content.cloneNode(true);
+      tmpl.getElementById('t-title').textContent = 'Cloned from <template>!';
+      tmpl.getElementById('t-body').textContent  = 'This card was cloned from a <template> tag using JavaScript.';
+      document.getElementById('template-output').appendChild(tmpl);
+    ">Clone &lt;template&gt;</button>
+
+    <h3>noscript</h3>
+    <noscript>
+      <p style="background:#fff3cd;padding:.8rem;border-left:4px solid #f39c12;font-size:.88rem;">
+        ⚠️ JavaScript is disabled. Some features on this page require JavaScript.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     9 · CSS SELECTORS
+══════════════════════════════════════════════════════════ -->
+<section id="css-selectors">
+  <div class="section-head">
+    <h2>CSS Selectors</h2>
+    <span class="tag-count">all selector types</span>
+  </div>
+  <div class="section-body">
+    <div class="css-grid">
+
+      <div class="css-card">
+        <h5>Basic Selectors</h5>
+        <pre><code>* { }          /* universal */
+div { }        /* element */
+.class { }     /* class */
+#id { }        /* id */
+[attr] { }     /* attribute */
+[attr="v"] { } /* attr value */
+[attr^="v"] { }/* starts with */
+[attr$="v"] { }/* ends with */
+[attr*="v"] { }/* contains */</code></pre>
+      </div>
+
+      <div class="css-card">
+        <h5>Combinators</h5>
+        <pre><code>div p { }    /* descendant */
+div > p { }  /* direct child */
+div + p { }  /* adjacent sibling */
+div ~ p { }  /* general sibling */</code></pre>
+      </div>
+
+      <div class="css-card">
+        <h5>Pseudo-classes</h5>
+        <pre><code>:hover       :focus
+:active      :visited
+:link        :checked
+:disabled    :enabled
+:first-child :last-child
+:nth-child() :nth-of-type()
+:not()       :is()
+:where()     :has()
+:root        :empty
+:target      :placeholder-shown
+:focus-within :focus-visible
+:any-link    :local-link</code></pre>
+      </div>
+
+      <div class="css-card">
+        <h5>Pseudo-elements</h5>
+        <pre><code>::before
+::after
+::first-line
+::first-letter
+::selection
+::placeholder
+::marker
+::backdrop
+::file-selector-button
+::spelling-error
+::grammar-error</code></pre>
+      </div>
+
+      <div class="css-card">
+        <h5>At-rules</h5>
+        <pre><code>@import
+@media
+@keyframes
+@font-face
+@supports
+@layer
+@container
+@counter-style
+@charset
+@page
+@namespace</code></pre>
+      </div>
+
+      <div class="css-card">
+        <h5>Specificity</h5>
+        <pre><code>/* 0-0-1 = element */
+p { color: red; }
+
+/* 0-1-0 = class */
+.class { }
+
+/* 1-0-0 = ID */
+#id { }
+
+/* 0-0-0 = !important */
+p { color: red !important; }
+
+/* inline = 1-0-0-0 */
+style="color:red"</code></pre>
+      </div>
+
+    </div>
+
+    <h3>:root &amp; CSS Custom Properties</h3>
+    <div class="demo-box">
+      <pre><code>:root {
+  --primary: #c0392b;
+  --spacing-md: 1rem;
+  --font-main: 'Lora', serif;
+}
+
+.component {
+  color: var(--primary);
+  padding: var(--spacing-md);
+  font-family: var(--font-main);
+  /* With fallback: */
+  background: var(--bg, white);
+}</code></pre>
+    </div>
+    <div class="cp-demo">✓ CSS Custom Properties (--local-color: #27ae60) applied here</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     10 · CSS BOX MODEL
+══════════════════════════════════════════════════════════ -->
+<section id="css-box">
+  <div class="section-head">
+    <h2>CSS Box Model &amp; Positioning</h2>
+    <span class="tag-count">margin · padding · border · position</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Box Model Properties</h3>
+    <div class="demo-box">
+      <pre><code>/* SIZING */
+width: 300px | 50% | auto | min-content | max-content | fit-content
+height: 200px | 100vh | auto
+min-width / max-width / min-height / max-height
+box-sizing: content-box | border-box
+
+/* SPACING */
+margin: top right bottom left
+margin: auto (center horizontally)
+padding: 1rem 2rem 1rem 2rem
+margin-inline: auto   /* logical property */
+padding-block: 2rem   /* logical property */
+
+/* BORDER */
+border: 2px solid #333
+border-radius: 4px | 50% | 8px 0 8px 0
+border-image: url(...) 30 round
+outline: 3px dashed red
+outline-offset: 4px
+
+/* DISPLAY */
+display: block | inline | inline-block | none
+         flex | inline-flex
+         grid | inline-grid
+         contents | list-item | table
+visibility: visible | hidden | collapse
+
+/* OVERFLOW */
+overflow: visible | hidden | scroll | auto | clip
+overflow-x / overflow-y
+text-overflow: ellipsis | clip</code></pre>
+    </div>
+
+    <h3>Positioning</h3>
+    <div class="demo-box">
+      <pre><code>position: static    /* default, in normal flow */
+position: relative  /* offset from own position */
+position: absolute  /* removed from flow, rel to nearest positioned parent */
+position: fixed     /* relative to viewport */
+position: sticky    /* hybrid: relative until scroll threshold */
+
+top / right / bottom / left  /* offset properties */
+z-index: 100        /* stacking order */
+float: left | right | none
+clear: both | left | right
+</code></pre>
+    </div>
+
+    <h3>CSS Shapes &amp; Clip-path</h3>
+    <div class="clip-demo">
+      <div class="clip" title="default">BOX</div>
+      <div class="clip c-circle" title="circle()">CIRCLE</div>
+      <div class="clip c-polygon" title="polygon()">TRI</div>
+      <div class="clip c-ellipse" title="ellipse()">ELLIPSE</div>
+      <div class="clip c-inset" title="inset()">INSET</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     11 · CSS LAYOUT
+══════════════════════════════════════════════════════════ -->
+<section id="css-layout">
+  <div class="section-head">
+    <h2>CSS Layout Systems</h2>
+    <span class="tag-count">flexbox · grid · multi-column</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Flexbox</h3>
+    <div class="demo-box">
+      <pre><code>/* Container */
+display: flex | inline-flex
+flex-direction: row | row-reverse | column | column-reverse
+flex-wrap: nowrap | wrap | wrap-reverse
+justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly
+align-items: stretch | flex-start | flex-end | center | baseline
+align-content: stretch | flex-start | flex-end | center | space-between | space-evenly
+gap: 1rem 2rem
+
+/* Items */
+flex: 1 1 auto    /* grow shrink basis */
+flex-grow: 1
+flex-shrink: 0
+flex-basis: 200px
+align-self: auto | flex-start | flex-end | center | stretch
+order: 2</code></pre>
+    </div>
+    <div class="flex-demo">
+      <div class="flex-item">flex-start</div>
+      <div class="flex-item" style="flex:1">flex: 1 (grows)</div>
+      <div class="flex-item">flex-end</div>
+    </div>
+    <div class="align-demo">
+      <div class="item a-start">start</div>
+      <div class="item a-center">center</div>
+      <div class="item a-end">end</div>
+      <div class="item a-stretch">stretch</div>
+    </div>
+
+    <h3>CSS Grid</h3>
+    <div class="demo-box">
+      <pre><code>/* Container */
+display: grid
+grid-template-columns: repeat(3, 1fr) | 200px auto 1fr
+grid-template-rows: 80px 1fr 40px
+grid-template-areas: 'a a b' 'c d b' 'c e e'
+gap: 1rem
+align-items / justify-items / place-items
+align-content / justify-content / place-content
+
+/* Items */
+grid-column: 1 / 3      /* span columns */
+grid-row: 2 / 4
+grid-area: a            /* named area */
+place-self: center stretch</code></pre>
+    </div>
+    <div class="grid-areas">
+      <div class="ga">A</div>
+      <div class="gb">B</div>
+      <div class="gc">C</div>
+      <div class="gd">D</div>
+      <div class="ge">E</div>
+    </div>
+
+    <h3>Multi-Column</h3>
+    <div style="column-count:3;column-gap:1.5rem;column-rule:1px solid var(--border);font-size:.85rem;">
+      <p>Multi-column layout using <code>column-count</code>. Text flows naturally across columns just like a newspaper.</p>
+      <p>You can also use <code>column-width</code> for responsive columns, <code>column-rule</code> for the divider line, and <code>column-span: all</code> to break across all columns.</p>
+      <p>Add <code>break-inside: avoid</code> to prevent awkward breaks inside a specific element mid-column.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     12 · VISUAL EFFECTS
+══════════════════════════════════════════════════════════ -->
+<section id="css-visual">
+  <div class="section-head">
+    <h2>CSS Visual Effects</h2>
+    <span class="tag-count">gradients · filters · transforms · shadows · blend</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Gradients</h3>
+    <div class="grad-row">
+      <div class="grad g-linear" title="linear-gradient"></div>
+      <div class="grad g-radial" title="radial-gradient"></div>
+      <div class="grad g-conic"  title="conic-gradient"></div>
+      <div class="grad g-repeat" title="repeating-linear-gradient"></div>
+    </div>
+    <p style="font-family:var(--ff-mono);font-size:.72rem;color:#666;margin-top:.4rem;">linear · radial · conic · repeating-linear</p>
+
+    <h3>Transforms</h3>
+    <div class="trans-demo">
+      <div class="trans-box">none</div>
+      <div class="trans-box t-rotate">rotate<br>20deg</div>
+      <div class="trans-box t-scale">scale<br>1.2</div>
+      <div class="trans-box t-skew">skewX<br>15deg</div>
+      <div class="trans-box t-3d">rotateY<br>25deg</div>
+      <div class="trans-box t-translate">translate<br>8,-8</div>
+    </div>
+
+    <h3>Filters</h3>
+    <div class="filter-demo">
+      <div><div class="filter-swatch"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">none</p></div>
+      <div><div class="filter-swatch f-blur"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">blur</p></div>
+      <div><div class="filter-swatch f-sepia"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">sepia</p></div>
+      <div><div class="filter-swatch f-invert"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">invert</p></div>
+      <div><div class="filter-swatch f-hue"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">hue-rotate</p></div>
+      <div><div class="filter-swatch f-saturate"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">saturate</p></div>
+      <div><div class="filter-swatch f-brightness"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">brightness</p></div>
+      <div><div class="filter-swatch f-contrast"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">contrast</p></div>
+      <div><div class="filter-swatch f-drop"></div><p style="font-family:var(--ff-mono);font-size:.65rem;margin-top:.3rem;">drop-shadow</p></div>
+    </div>
+
+    <h3>Shadows &amp; Blending</h3>
+    <div class="demo-box">
+      <pre><code>/* Box shadow */
+box-shadow: 4px 4px 10px rgba(0,0,0,.2);
+box-shadow: inset 0 2px 4px rgba(0,0,0,.15);
+box-shadow: 0 0 0 3px var(--accent);  /* ring/focus */
+
+/* Text shadow */
+text-shadow: 2px 2px 4px rgba(0,0,0,.3);
+text-shadow: 0 0 10px var(--accent);  /* glow */
+
+/* Mix blend mode */
+mix-blend-mode: multiply | screen | overlay | darken
+              | lighten | color-dodge | difference | exclusion
+
+/* Background blend mode */
+background-blend-mode: multiply | screen | overlay</code></pre>
+    </div>
+
+    <h3>Typography Properties</h3>
+    <div class="demo-box">
+      <pre><code>font-family: 'Lora', Georgia, serif
+font-size: 1rem | 16px | clamp(1rem, 2vw, 1.5rem)
+font-weight: 100 to 900
+font-style: normal | italic | oblique
+font-variant: small-caps | normal
+font-feature-settings: "kern" 1, "liga" 1
+line-height: 1.6 | 24px
+letter-spacing: .05em | 1px
+word-spacing: .2em
+text-align: left | center | right | justify
+text-transform: uppercase | lowercase | capitalize
+text-decoration: underline wavy var(--accent)
+text-indent: 2em
+white-space: nowrap | pre | pre-wrap | break-spaces
+word-break: break-all | keep-all
+overflow-wrap: anywhere
+writing-mode: vertical-rl | horizontal-tb</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     13 · CSS ANIMATION
+══════════════════════════════════════════════════════════ -->
+<section id="css-anim">
+  <div class="section-head">
+    <h2>CSS Animation &amp; Transition</h2>
+    <span class="tag-count">@keyframes · animation · transition</span>
+  </div>
+  <div class="section-body">
+
+    <h3>Live Animations</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;padding:1rem 0;">
+      <div>
+        <div class="anim-spin">⚙️</div>
+        <p style="font-family:var(--ff-mono);font-size:.7rem;color:#666;margin-top:.4rem;">spin</p>
+      </div>
+      <div>
+        <div class="anim-pulse" style="font-size:1.5rem;">❤️</div>
+        <p style="font-family:var(--ff-mono);font-size:.7rem;color:#666;margin-top:.4rem;">pulse</p>
+      </div>
+      <div>
+        <div class="anim-bounce" style="font-size:1.5rem;">⬆</div>
+        <p style="font-family:var(--ff-mono);font-size:.7rem;color:#666;margin-top:.4rem;">bounce</p>
+      </div>
+      <div style="width:150px;">
+        <div class="anim-shimmer"></div>
+        <p style="font-family:var(--ff-mono);font-size:.7rem;color:#666;margin-top:.4rem;">shimmer</p>
+      </div>
+    </div>
+
+    <h3>Transition</h3>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0;">
+      <div style="
+        background:var(--accent2);color:#fff;padding:.6rem 1.2rem;
+        border-radius:2px;font-family:var(--ff-mono);font-size:.8rem;
+        cursor:pointer;
+        transition: background .3s ease, transform .2s ease, box-shadow .3s ease;
+      "
+        onmouseover="this.style.background='#c0392b';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 20px rgba(0,0,0,.2)'"
+        onmouseout="this.style.background='';this.style.transform='';this.style.boxShadow=''"
+      >Hover me (transition)</div>
+    </div>
+
+    <div class="demo-box">
+      <pre><code>/* KEYFRAMES */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ANIMATION SHORTHAND */
+animation: fadeSlideIn .6s ease-out .2s 1 normal forwards;
+/*         name   duration easing delay count direction fill-mode */
+
+/* INDIVIDUAL PROPERTIES */
+animation-name: fadeSlideIn
+animation-duration: .6s
+animation-timing-function: ease | ease-in | ease-out | cubic-bezier(.4,0,.2,1)
+animation-delay: .2s
+animation-iteration-count: infinite | 3
+animation-direction: normal | reverse | alternate | alternate-reverse
+animation-fill-mode: none | forwards | backwards | both
+animation-play-state: running | paused
+
+/* TRANSITION */
+transition: property duration easing delay
+transition: all .3s ease
+transition: background .2s, transform .3s cubic-bezier(.34,1.56,.64,1)</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     14 · RESPONSIVE / MEDIA QUERIES
+══════════════════════════════════════════════════════════ -->
+<section id="css-responsive">
+  <div class="section-head">
+    <h2>Responsive Design &amp; Media Queries</h2>
+    <span class="tag-count">@media · @container · @supports · viewport units</span>
+  </div>
+  <div class="section-body">
+    <div class="demo-box">
+      <pre><code>/* MEDIA QUERIES */
+@media (max-width: 768px) { /* mobile */ }
+@media (min-width: 769px) and (max-width: 1024px) { /* tablet */ }
+@media (prefers-color-scheme: dark) { /* dark mode */ }
+@media (prefers-reduced-motion: reduce) { /* no animations */ }
+@media (orientation: landscape) { }
+@media print { /* print styles */ }
+@media (hover: hover) { /* devices with hover */ }
+@media (min-resolution: 2dppx) { /* retina */ }
+
+/* CONTAINER QUERIES */
+.parent { container-type: inline-size; }
+@container (min-width: 400px) {
+  .child { grid-template-columns: 1fr 1fr; }
+}
+
+/* FEATURE QUERIES */
+@supports (display: grid) {
+  .layout { display: grid; }
+}
+@supports not (backdrop-filter: blur()) {
+  .fallback { background: rgba(0,0,0,.8); }
+}
+
+/* VIEWPORT UNITS */
+width: 100vw; height: 100vh;
+width: 100svw; height: 100svh;  /* small viewport */
+width: 100dvw; height: 100dvh;  /* dynamic viewport */
+font-size: 5vmin;
+padding: clamp(1rem, 5vw, 3rem);</code></pre>
+    </div>
+
+    <h3>Logical Properties</h3>
+    <div class="demo-box">
+      <pre><code>/* Physical → Logical equivalents */
+margin-left   → margin-inline-start
+margin-right  → margin-inline-end
+margin-top    → margin-block-start
+margin-bottom → margin-block-end
+width         → inline-size
+height        → block-size
+border-left   → border-inline-start
+text-align: left → text-align: start</code></pre>
+    </div>
+
+    <h3>CSS Functions</h3>
+    <div class="demo-box">
+      <pre><code>/* MATH */
+calc(100% - 2rem)
+min(100%, 600px)
+max(1rem, 2vw)
+clamp(1rem, 2.5vw, 2rem)
+
+/* COLOR */
+rgb(0 0 255 / .5)     /* modern syntax */
+hsl(220 90% 56%)
+oklch(60% .2 250)     /* perceptual color space */
+color-mix(in srgb, red 30%, blue)
+
+/* ENVIRONMENT */
+env(safe-area-inset-top)
+
+/* SHAPES */
+circle(50%)
+polygon(0 0, 100% 0, 50% 100%)
+path('M0,0 L100,50')
+
+/* IMAGES */
+url("image.png")
+linear-gradient(...)
+image-set("img.webp" 1x, "img@2x.webp" 2x)
+
+/* COUNTERS */
+counter(section)
+counters(list, ".")
+
+/* OTHER */
+var(--custom-property, fallback)
+attr(data-label)
+format("woff2")</code></pre>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer>
+  <address>
+    HTML &amp; CSS Complete Reference &mdash; All Tags &amp; Properties<br>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank" rel="noopener">MDN HTML Elements</a>
+    &nbsp;|&nbsp;
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank" rel="noopener">MDN CSS Reference</a>
+  </address>
+  <p style="margin-top:.8rem;opacity:.4;">&copy; <time datetime="2024">2024</time> &mdash; Built with pure HTML &amp; CSS</p>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCRIPT
+══════════════════════════════════════════════════════════ -->
+<script>
+  // Draw on canvas
+  (function () {
+    const canvas = document.getElementById('demo-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+
+    // Background
+    const bg = ctx.createLinearGradient(0, 0, W, 0);
+    bg.addColorStop(0, '#1a1a2e');
+    bg.addColorStop(1, '#16213e');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // Text
+    ctx.font = 'bold 14px Space Mono, monospace';
+    ctx.fillStyle = '#e0e0ff';
+    ctx.fillText('<canvas> — 2D drawing context', 12, 30);
+
+    // Shapes
+    ctx.beginPath();
+    ctx.arc(50, 65, 18, 0, Math.PI * 2);
+    ctx.fillStyle = '#c0392b';
+    ctx.fill();
+
+    ctx.fillStyle = '#b8860b';
+    ctx.fillRect(90, 48, 36, 36);
+
+    ctx.beginPath();
+    ctx.moveTo(160, 48); ctx.lineTo(195, 84); ctx.lineTo(125, 84);
+    ctx.closePath();
+    ctx.fillStyle = '#27ae60';
+    ctx.fill();
+
+    const grad2 = ctx.createRadialGradient(245, 65, 5, 245, 65, 22);
+    grad2.addColorStop(0, '#8e44ad');
+    grad2.addColorStop(1, '#2c3e50');
+    ctx.beginPath();
+    ctx.arc(245, 65, 22, 0, Math.PI * 2);
+    ctx.fillStyle = grad2;
+    ctx.fill();
+
+    ctx.strokeStyle = 'rgba(255,255,255,.2)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let x = 0; x < W; x += 30) { ctx.moveTo(x, 0); ctx.lineTo(x, H); }
+    ctx.stroke();
+  })();
+</script>
+
+</body>
+</html>

@@ -1,1 +1,0 @@
-alert("Welcome to sigma web devlopment course")
